@@ -1,0 +1,182 @@
+#+TITLE:     m04r productivity!
+#+AUTHOR:    Hugo Mougard
+#+DATE:      \today
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  fr
+#+LATEX_CMD: xelatex
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+BEAMER_HEADER_EXTRA: \beamertemplatenavigationsymbolsempty
+#+BEAMER_HEADER_EXTRA: \usetheme{Warsaw}
+#+BEAMER_HEADER_EXTRA: \usecolortheme{default}
+#+LaTeX_HEADER: \usepackage{libertine}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage{french}
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_envargs(Env Args) %4BEAMER_col(Col) %8BEAMER_extra(Extra)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 :ETC
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+* Le souci
+** L'approche naïve n'est pas la bonne
+   Il était une fois l'étudiant naïf de licence en Informatique et son
+   prof, qui lui donna un projet à réaliser avec 3 de ses potes…
+** Gestion du code
+*** L'idée naïve						    :B_block:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+   Chacun gère de son côté et on partage par mails à tout le groupe.
+*** Problèmes 						       :B_alertblock:
+    :PROPERTIES:
+    :BEAMER_env: alertblock
+    :END:
+    - conflits quand plusieurs personnes codent sur le même fichier
+    - très dur de retrouver l'état du code à un moment donné
+    - gestion des versions par archives assez vite bordélique
+** Gestion du build
+*** L'idée naïve						    :B_block:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+    Un projet Eclipse par personne, et utilisation du joli bouton
+    vert pour lancer le programme
+*** Problèmes						       :B_alertblock:
+    :PROPERTIES:
+    :BEAMER_env: alertblock
+    :END:
+    - gestion manuelle des dépendences
+    - difficulté à importer le travail des autres
+    - tests non automatiques
+    - …
+** Rescue time
+   #+LaTeX: \hfill
+   #+ATTR_LaTeX: width=9cm
+   [[./img/superman.jpg]]
+   #+LaTeX: \hspace*{\fill}
+* Git
+** 
+   #+LaTeX: \hfill
+   #+ATTR_LaTeX: width=7cm
+   [[./img/git-logo.jpg]]
+   #+LaTeX: \hspace*{\fill}
+** Kezako ?
+   Logiciel qui sert à :
+   - versionner son code
+   - combiner son travail à celui des autres
+   - combiner son travail à… son travail
+   - partager son code
+   - chasser les bugs
+   - avoir un historique de développement
+** Pour apprendre
+   http://git-scm.com/book/ chapitres 1 & 2 et http://try.github.io
+** Sous emacs
+   Coucou, tu veux voir Magit ?
+** Les bases, en images, 1/7
+   #+ATTR_LaTeX: width=6cm
+   #+CAPTION: Un système de gestion de code « basique »
+   [[./img/cvs.png]]
+** Les bases, en images, 2/7
+   #+ATTR_LaTeX: width=6cm
+   #+CAPTION: Un système de gestion de code centralisé
+   [[./img/ccvs.png]]
+** Les bases, en images, 3/7
+   #+ATTR_LaTeX: width=5cm
+   #+CAPTION: Un système de gestion de code décentralisé
+   [[./img/dcvs.png]]
+** Les bases, en images, 4/7
+   #+ATTR_LaTeX: width=10cm
+   #+CAPTION: La base de données est en fait un truc pas crade
+   [[./img/deltas.png]]
+** Les bases, en images, 5/7
+   #+ATTR_LaTeX: width=10cm
+   #+CAPTION: Qui permet quand même de tout retrouver
+   [[./img/deltas-unfold.png]]
+** Les bases, en images, 6/7
+   #+ATTR_LaTeX: width=6cm
+   #+CAPTION: Le titre du haut est déjà nice <3
+   [[./img/areas.png]]
+** Les bases, en images, 7/7
+   #+ATTR_LaTeX: width=8cm
+   #+CAPTION: Le titre du haut est déjà nice <3
+   [[./img/git-lifecycle.png]]
+** Les principales commandes
+   - git init pour transformer un dossier en dépôt git
+   - git add pour tracker des fichiers ou dire qu'on veut les commit
+   - git commit pour commit (j'espère que mon explication sera
+     meilleure à l'oral)
+   - git push pour mettre les derniers commits sur un dépôt lointain
+   - git pull pour récupérer les derniers commits sur un dépôt lointain
+   - git log pour avoir l'historique d'un dépôt
+   - git diff pour connaître les différences entre un fichier à des
+     moments 1 & 2
+** Demo time
+   ♥
+* Les Autotools
+** 
+   #+LaTeX: \hfill
+   #+ATTR_LaTeX: width=7cm
+   [[./img/gnu.png]]
+   #+LaTeX: \hspace*{\fill}
+** Kezako ?
+   Logiciels qui servent à :
+   - construire des programmes C/C++ (principalement)
+   - gérer les différents systèmes cibles
+   - simplifier la compilation et la re-compilation
+** La base : le Makefile
+   Fichier qui sert à exprimer les dépendences de compilation et les
+   manières de compiler pour automatiser le build.
+** Demo time
+   ♥
+** La base en mieux : Makefile.in et configure
+   On rend le Makefile configurable en y laissant des points de
+   customisation et on se sert de configure pour configurer ce patron
+   de Makefile.
+** Demo time
+   ♥
+** La rolls royce : automake
+   On peut écrire un Makefile.in automatiquement. C'est ce que fait
+   automake.
+** Demo time
+   ♥
+* Maven
+** 
+   #+LaTeX: \hfill
+   #+ATTR_LaTeX: width=10cm
+   [[./img/maven.png]]
+   #+LaTeX: \hspace*{\fill}
+** Kezako ?
+   Pareil qu'Autotools, mais pour la JVM, et en mieux.
+** Pour apprendre
+   https://maven.apache.org/guides/
+** Buts de Maven
+   Aider dans ces différentes tâches (prises du Getting Started) :
+   - Builds
+   - Documentation
+   - Reporting
+   - Dependencies
+   - SCMs
+   - Releases
+   - Distribution
+** Demo time
+   ♥
+* Autres outils
+** Mais ce n'est pas tout
+   - tests
+     - intégration continue
+     - codebase health monitoring
+   - bug tracker
+   - documentation
+   - …
+** Demo time
+   ♥
+** Ce n'est qu'un au revoir
+   [[./img/the-end.jpg]]

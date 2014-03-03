@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="author" content="Colin Hughes">
+<meta name="description" content="A website dedicated to the fascinating world of mathematics and programming">
+<meta name="keywords" content="programming,mathematics,problems,puzzles">
+
+<title>Problem 18 - Project Euler</title>
+<link rel="shortcut icon" href="http://projecteuler.net/favicon.ico">
+<link rel="stylesheet" type="text/css" href="Problem%2018%20-%20Project%20Euler_files/style_main.css">
+<link rel="stylesheet" type="text/css" href="Problem%2018%20-%20Project%20Euler_files/style_light.css">
+<script type="text/x-mathjax-config;executed=true">
+   MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+         inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+         displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+         processEscapes: true
+      },
+      "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+
+<script type="text/javascript" src="Problem%2018%20-%20Project%20Euler_files/MathJax.js">
+</script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+
+<body><div style="display: none;" id="MathJax_Message"></div>
+<div id="container">
+
+   <div id="nav" class="noprint">
+      <ul>
+<li><a href="https://projecteuler.net/about" title="About" accesskey="h">About</a></li>
+<li><a href="https://projecteuler.net/register" title="Register" accesskey="1">Register</a></li>
+<li id="current"><a href="https://projecteuler.net/problems" title="Problems" accesskey="2">Problems</a></li>
+<li><a href="https://projecteuler.net/login" title="Login" accesskey="3">Login</a></li>
+      </ul>
+   </div>
+<div id="info_panel"><a href="https://projecteuler.net/rss2_euler.xml"><img src="Problem%2018%20-%20Project%20Euler_files/icon_rss.png" alt="RSS Feed" title="RSS Feed"></a><a href="https://projecteuler.net/secure=3a70f"><img src="Problem%2018%20-%20Project%20Euler_files/icon_unlock.png" alt="Do not use secure connection" title="Do not use secure connection"></a></div>
+
+<div id="logo" class="noprint">
+   <img src="Problem%2018%20-%20Project%20Euler_files/pe_banner_light.png" alt="Project Euler .net">
+</div>
+
+<div id="content">
+<div style="text-align:center;" class="print"><img src="Problem%2018%20-%20Project%20Euler_files/pe_banner.png" alt="projecteuler.net" style="border:none;"></div>
+<h2>Maximum path sum I</h2><div class="info" style="cursor:help;width:200px;margin-bottom:10px;"><h3>Problem 18</h3><span style="width:300px;color:#666;">Published on Friday, 31st May 2002, 06:00 pm; Solved by 64802</span></div>
+<div class="problem_content" role="problem">
+<p>By starting at the top of the triangle below and moving to adjacent 
+numbers on the row below, the maximum total from top to bottom is 23.</p>
+<p style="text-align:center;font-family:courier new;font-size:12pt;"><span style="color:#ff0000;"><b>3</b></span><br>
+<span style="color:#ff0000;"><b>7</b></span> 4<br>
+2 <span style="color:#ff0000;"><b>4</b></span> 6<br>
+8 5 <span style="color:#ff0000;"><b>9</b></span> 3</p>
+<p>That is, 3 + 7 + 4 + 9 = 23.</p>
+<p>Find the maximum total from top to bottom of the triangle below:</p>
+<p style="text-align:center;font-family:courier new;">75<br>
+95 64<br>
+17 47 82<br>
+18 35 87 10<br>
+20 04 82 47 65<br>
+19 01 23 75 03 34<br>
+88 02 77 73 07 63 67<br>
+99 65 04 28 06 16 70 92<br>
+41 41 26 56 83 40 80 70 33<br>
+41 48 72 33 47 32 37 16 94 29<br>
+53 71 44 65 25 43 91 52 97 51 14<br>
+70 11 33 28 77 73 17 78 39 68 17 57<br>
+91 71 52 38 17 14 91 43 58 50 27 29 48<br>
+63 66 04 68 89 53 67 30 73 16 69 87 40 31<br>
+04 62 98 27 23 09 70 98 73 93 38 53 60 04 23</p>
+<p class="info"><b>NOTE:</b> As there are only 16384 routes, it is possible to solve this problem by trying every route. However, <a href="https://projecteuler.net/index.php?section=problems&amp;id=67">Problem 67</a>,
+ is the same challenge with a triangle containing one-hundred rows; it 
+cannot be solved by brute force, and requires a clever method! ;o)</p>
+</div><br>
+<br></div>
+
+
+
+
+
+<div id="footer" class="noprint">
+<a href="https://projecteuler.net/copyright">Project Euler Copyright Information</a>
+<!--/Creative Commons License--><!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+   <Work rdf:about="">
+      <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.0/uk/" />
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   </Work>
+   <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.0/uk/"><permits rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/><permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/><requires rdf:resource="http://web.resource.org/cc/ShareAlike"/></License></rdf:RDF> -->
+</div>
+</div>
+<div style="height:1px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; </div>
+</body></html>
